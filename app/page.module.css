@@ -1,17 +1,12 @@
-/* Variables and Base Styles */
 .page {
   --background: #fafafa;
   --foreground: #fff;
   --text-primary: #000;
   --text-secondary: #666;
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
   --button-secondary-border: #ebebeb;
-
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: var(--font-geist-sans);
   background-color: var(--background);
 }
 
@@ -22,7 +17,6 @@
   padding: 40px 20px;
 }
 
-/* Controls (Search and Filter) */
 .controls {
   margin-bottom: 40px;
   display: flex;
@@ -50,123 +44,115 @@
   border: 1px solid var(--button-secondary-border);
   background: var(--foreground);
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .categoryBtn.active {
-  background: var(--text-primary);
-  color: var(--background);
+  background: #000;
+  color: #fff;
 }
 
-.resultsCount {
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-/* Article Grid */
 .articleGrid {
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(1, 1fr); /* Mobile: 1 Column */
+  grid-template-columns: repeat(1, 1fr);
 }
 
-/* Requirement: Responsive Design[span_0](end_span) */
 @media (min-width: 768px) {
-  .articleGrid { grid-template-columns: repeat(2, 1fr); } /* Tablet: 2 Columns */
+  .articleGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 1024px) {
-  .articleGrid { grid-template-columns: repeat(3, 1fr); } /* Desktop: 3 Columns */
+  .articleGrid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Blog Card */
 .blogCard {
-  background: var(--foreground);
+  background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
-.blogCard:hover {
-  transform: translateY(-5px);
+.cardImageWrapper {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
 }
 
 .cardImage {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
 }
 
-.cardContent {
-  padding: 20px;
-}
-
-.cardContent h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-}
-
-/* Modal Styles */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.85);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
   padding: 20px;
 }
 
 .modalContent {
-  background: var(--foreground);
-  max-width: 800px;
+  background: #fff;
+  max-width: 700px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   border-radius: 16px;
   position: relative;
-  padding: 30px;
+  padding: 25px;
+}
+
+/* Forces image to stay at top and text below it */
+.modalImageWrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px; 
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .modalImage {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  color: #000;
 }
 
 .closeBtn {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  background: #fff;
   border: none;
-  font-size: 30px;
+  font-size: 28px;
   cursor: pointer;
-  color: var(--text-primary);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* Fixing text-wrap error */
-.intro h1, .intro p {
-  max-width: 440px;
-  overflow-wrap: break-word; /* Replaced text-wrap: balance */
-  color: var(--text-primary);
-}
-
-/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
-  .page {
-    --background: #000;
-    --foreground: #111;
-    --text-primary: #ededed;
-    --text-secondary: #999;
-    --button-secondary-border: #333;
-  }
+  .page { --background: #000; --foreground: #111; }
+  .modalContent { background: #111; color: #fff; }
+  .modalTitle { color: #fff; }
 }

@@ -5,9 +5,9 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-// SEO Metadata আপডেট করা হয়েছে
+ে
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'), // লোকাল হোস্টের জন্য, লাইভ করার সময় ইউআরএল পাল্টে দেবেন
+  metadataBase: new URL('https://assessment-o1.vercel.app/'), 
   title: "Tech Blog | Insights for Modern Developers", 
   description: "Stay ahead with the latest trends in software engineering, AI, and web development through expert-led articles.",
   openGraph: {
